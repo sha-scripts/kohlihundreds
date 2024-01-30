@@ -1,0 +1,54 @@
+1.Total Centuries Scored:
+SELECT COUNT(*) AS Total_Centuries
+FROM centuries;
+
+2.Average Runs in Centuries:
+SELECT AVG(Runs) AS Average_Runs
+FROM centuries;
+
+3.Match of Highest Century:
+SELECT Against, Runs, Venue, Ground, Date, Result
+FROM centuries
+ORDER BY Runs DESC
+LIMIT 1;
+
+4.Centuries by Opposition Team:
+SELECT Against, COUNT(*) AS Centuries_Count
+FROM centuries
+GROUP BY Against;
+
+5.Centuries by Venue:
+SELECT Venue, COUNT(*) AS Centuries_Count
+FROM centuries
+GROUP BY Venue;
+
+6.Outcome of Matches with Centuries:
+SELECT Result, COUNT(*) AS Match_Count
+FROM centuries
+GROUP BY Result;
+
+
+7.Average Batting Position for Centuries:
+SELECT AVG(Position) AS Average_Batting_Position
+FROM centuries;
+
+8.Centuries in Away Venues:
+SELECT COUNT(*) AS Away_Centuries
+FROM centuries
+WHERE Ground LIKE '%Away%';
+
+9.Centuries in Home Venues:
+SELECT COUNT(*) AS Home_Centuries
+FROM centuries
+WHERE Ground LIKE '%Home%';
+
+10.Centuries Home VS Away
+SELECT 
+    CASE 
+        WHEN Ground LIKE '%Home%' THEN 'Home'
+        ELSE 'Away'
+    END AS Ground_Type,
+    COUNT(*) AS Centuries_Count
+FROM centuries
+GROUP BY Ground_Type;
+
